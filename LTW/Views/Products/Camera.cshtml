@@ -1,0 +1,414 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Travel</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        .laptop-page {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 10px;
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+
+        .size-filter-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Breadcrumb & Sắp xếp */
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .breadcrumb {
+            color: #888;
+        }
+
+            .breadcrumb strong {
+                color: #000;
+            }
+
+        .sort-box select {
+            padding: 6px 12px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            color: #555;
+            outline: none;
+        }
+
+        /* Bố cục SideBar + Danh sách */
+        .main-layout {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .sidebar {
+            width: 250px;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .filter-title {
+            background-color: #eaeaea;
+            padding: 12px 15px;
+            font-weight: bold;
+            font-size: 15px;
+            color: #000;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            letter-spacing: 0.5px;
+        }
+
+            .filter-title:first-child {
+                margin-top: 0;
+            }
+
+        /* Danh sách khoảng GIÁ */
+        .price-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 15px 0;
+        }
+
+            .price-list li {
+                border-bottom: 1px solid #eee;
+                padding: 10px 0;
+            }
+
+                .price-list li:last-child {
+                    border-bottom: none;
+                }
+
+            .price-list a {
+                color: #0088cc;
+                text-decoration: none;
+                font-size: 14px;
+            }
+
+        /* Cấu trúc Danh mục phân cấp */
+        .cat-parent {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 0;
+            margin-bottom: 8px;
+        }
+
+        .cat-title {
+            color: #0088cc;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        .cat-arrow {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .sub-category-list {
+            list-style: none;
+            padding-left: 15px;
+            margin: 0;
+            border-left: 2px solid #e2e2e2;
+        }
+
+            .sub-category-list li {
+                padding: 6px 0;
+            }
+
+            .sub-category-list a {
+                color: #0088cc;
+                text-decoration: none;
+                font-size: 14px;
+                display: block;
+            }
+
+                .sub-category-list a.active {
+                    color: #000;
+                    font-weight: bold;
+                }
+
+        /* Lưới sản phẩm */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            flex-grow: 1;
+        }
+
+        .product-card {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .img-box {
+            position: relative;
+            background-color: #f8f8f8;
+            aspect-ratio: 1/1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+
+            .img-box img {
+                max-width: 85%;
+                max-height: 85%;
+                object-fit: contain;
+            }
+
+        .badge-sale {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            background-color: #ff0000;
+            color: #fff;
+            border-radius: 50%;
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .color-thumbs {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 8px;
+        }
+
+        .thumb-item {
+            width: 28px;
+            height: 28px;
+            border: 1px solid #ddd;
+            padding: 2px;
+            cursor: pointer;
+        }
+
+            .thumb-item img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+        .product-name {
+            color: #0088cc;
+            text-decoration: none;
+            font-size: 14px;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+            .product-name:hover {
+                text-decoration: underline;
+            }
+
+        .price-box {
+            margin-top: auto;
+            font-size: 14px;
+        }
+
+        .old-price {
+            text-decoration: line-through;
+            color: #d15b5b;
+            font-size: 12px;
+            margin-right: 5px;
+        }
+
+        .current-price {
+            color: #d0021b;
+            font-weight: bold;
+        }
+
+        /* Danh sách danh mục chuẩn giao diện mẫu */
+        .category-tree {
+            width: 100%;
+        }
+
+        .category-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+            .category-list > li {
+                border-bottom: 1px solid #eee;
+                padding: 12px 0;
+            }
+
+                .category-list > li:last-child {
+                    border-bottom: none;
+                }
+
+        .cat-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .category-list a.cat-title {
+            color: #0088cc;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: normal;
+            transition: color 0.2s ease;
+        }
+
+            .category-list a.cat-title:hover {
+                color: #005580;
+            }
+
+            /* Đổi màu đen và in đậm cho mục đang active */
+            .category-list a.cat-title.active,
+            .category-list li.active > .cat-item > a.cat-title {
+                color: #000 !important;
+                font-weight: bold !important;
+            }
+
+
+       
+    </style>
+</head>
+<body>
+    <div class="laptop-page">
+        @*Header lọc theo kích thước*@
+        <div class="size-filter-header">
+            <h1></h1>
+        </div>
+
+        @*Thanh thông tin & Sắp xếp*@
+        <div class="top-bar">
+            <div class="breadcrumb">
+                TRANG CHỦ / BALO / <strong>BALO MÁY ẢNH</strong>
+            </div>
+            <div class="sort-box">
+                <span>Hiển thị 3 kết quả </span>
+                <select>
+                    <option>Sắp xếp theo mới nhất</option>
+                    <option>Giá từ thấp đến cao</option>
+                    <option>Giá từ cao đến thấp</option>
+                </select>
+            </div>
+        </div>
+
+        @*Layout chính*@
+        <div class="main-layout">
+            @*Sidebar lọc bên trái*@
+            <aside class="sidebar">
+                @*GIÁ*@
+                <div class="filter-title">GIÁ</div>
+                <ul class="price-list">
+                    <li><a href="#">Từ 0 - 300.000vnđ</a></li>
+                    <li><a href="#">Từ 300.000vnđ - 500.000vnđ</a></li>
+                    <li><a href="#">Từ 500.000vnđ - 1.000.000vnđ</a></li>
+                    <li><a href="#">Từ 1.000.000vnđ - 3.000.000vnđ</a></li>
+                    <li><a href="#">Từ 3.000.000vnđ - 5.000.000vnđ</a></li>
+                </ul>
+
+                @*DANH MỤC SẢN PHẨM*@
+                <div class="filter-title">DANH MỤC SẢN PHẨM</div>
+                <div class="category-tree">
+                    <ul class="category-list">
+                        <!-- Balo laptop-->
+                        <li class="has-child">
+                            <div class="cat-item">
+                                <a href="#" class="cat-title">Balo</a>
+
+                            </div>
+                        </li>
+
+                        <!-- Balo du lịch-->
+                        <li class="has-child">
+                            <div class="cat-item">
+                                <a href="#" class="cat-title">Balo du lịch</a>
+
+                            </div>
+                        </li>
+
+                        <!-- Balo máy ảnh (Active - Đang được chọn) -->
+                        <li class="has-child open active">
+                            <div class="cat-item">
+                                <a href="#" class="cat-title active">Balo máy ảnh</a>
+                            </div>
+                        </li>
+
+                        <!-- Túi xách-->
+                        <li class="has-child">
+                            <div class="cat-item">
+                                <a href="#" class="cat-title">Túi xách</a>
+
+                            </div>
+                        </li>
+
+                        <!-- Phụ Kiện -->
+                        <li>
+                            <a href="#" class="cat-title">Phụ Kiện</a>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+
+            @*Lưới sản phẩm bên phải*@
+            <main class="product-grid">
+                @*Sản phẩm 1*@
+                <div class="product-card">
+                    <div class="img-box">
+                        <span class="badge-sale">-30%</span>
+                        <img src="https://balosaigon.com/wp-content/uploads/2025/08/Mikkor-The-Levi-Sling-20.jpg" alt="Balo Thể Thao Under Armour Undeniable 3.0 Backpack">
+                    </div>
+                    <a href="#" class="product-name">Balo Thể Thao Mikkor The Levi Sling</a>
+                    <div class="price-box">
+                        <span class="old-price">1.490.000 VND</span>
+                        <span class="current-price">1.050.000 VND</span>
+                    </div>
+                </div>
+
+                @*Sản phẩm 2*@
+                <div class="product-card">
+                    <div class="img-box">
+                        <span class="badge-sale">-23%</span>
+                        <img src="https://balosaigon.com/wp-content/uploads/2025/03/Mikkor-The-Rocky-Light-3.jpg" alt="Balo Thể Thao Mikkor The Rocky Light">
+                    </div>
+                    <a href="#" class="product-name">Balo Thể Thao Mikkor The Rocky Light</a>
+                    <div class="price-box">
+                        <span class="old-price">1.100.000 VND</span>
+                        <span class="current-price">849.000 VND</span>
+                    </div>
+                </div>
+
+                @*Sản phẩm 3*@
+                <div class="product-card">
+                    <div class="img-box">
+                        <img src="https://balosaigon.com/wp-content/uploads/2023/04/adidas-star-wars-4cmte-backpack.jpg" alt="Balo Thể Thao Adidas Star Wars Backpack">
+                    </div>
+                    <a href="#" class="product-name">Balo Thể Thao Adidas Star Wars Backpack</a>
+                    <div class="price-box">
+                        <span class="current-price">500.000 VND</span>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+</html>

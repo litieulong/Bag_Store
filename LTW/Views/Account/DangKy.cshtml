@@ -1,0 +1,47 @@
+﻿@{
+    ViewBag.Title = "Đăng Ký - Balo Sài Gòn";
+}
+
+<!-- Nhúng CSS Auth -->
+<link rel="stylesheet" href="~/Content/DangKyDangNhap.css" />
+
+<div class="auth-wrapper">
+    <div class="auth-card">
+        <h1 class="auth-title">Đăng Ký Tài Khoản</h1>
+        <p class="auth-subtitle">Tạo tài khoản mới để nhận nhiều ưu đãi</p>
+
+        <form action="@Url.Action("Register", "Account")" method="post">
+            <div class="form-group">
+                <label for="fullname">Họ và Tên</label>
+                <input type="text" id="fullname" name="fullname" class="form-control-custom" placeholder="Nguyễn Văn A" required />
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Số điện thoại</label>
+                <input type="tel" id="phone" name="phone" class="form-control-custom" placeholder="0901234567" required />
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" class="form-control-custom" placeholder="example@gmail.com" required />
+            </div>
+
+            <div class="form-group">
+                <label for="password">Mật khẩu</label>
+                <input type="password" id="password" name="password" class="form-control-custom" placeholder="Tối thiểu 6 ký tự..." required />
+            </div>
+
+            <div class="form-group">
+                <label for="confirmPassword">Xác nhận mật khẩu</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" class="form-control-custom" placeholder="Nhập lại mật khẩu..." required />
+            </div>
+
+            <button type="submit" class="btn-auth-submit">Tạo Tài Khoản</button>
+        </form>
+
+        <!-- Nút quay lại View Đăng Nhập -->
+        <div class="auth-footer-text">
+            Đã có tài khoản? <a href="@Url.Action("DangNhap", "Account")">Đăng nhập ngay</a>
+        </div>
+    </div>
+</div>

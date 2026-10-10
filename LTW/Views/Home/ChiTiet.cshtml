@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "Chi Tiết Sản Phẩm - BALOSAIGON";
+}
+
+<!-- Nhúng CSS Chi tiết sản phẩm -->
+<link href="@Url.Content("~/Content/product-detail.css")" rel="stylesheet" type="text/css" />
+
+<div class="container" style="padding: 40px 15px; max-width: 1200px; margin: 0 auto;">
+    <!-- Breadcrumb -->
+    <div style="font-size: 14px; color: #64748b; margin-bottom: 25px;">
+        <a href="@Url.Action("Index", "Home")" style="color: #1f2229; text-decoration: none;">Trang chủ</a> /
+        <span>Chi tiết sản phẩm</span>
+    </div>
+
+    <!-- Khung thông tin chi tiết -->
+    <div style="display: flex; gap: 40px; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+        <!-- Cột Ảnh -->
+        <div style="flex: 1;">
+            <img src="@ViewBag.Img" style="width: 100%; border-radius: 8px; border: 1px solid #e2e8f0;" alt="Sản phẩm" />
+        </div>
+
+        <!-- Cột Thông Tin -->
+        <div style="flex: 1;">
+            <h1 style="font-size: 26px; font-weight: 800; color: #1f2229; margin-bottom: 10px;">@ViewBag.Name</h1>
+            <p style="font-size: 14px; color: #64748b; margin-bottom: 15px;">Mã SP: <strong style="color: #1f2229;">@ViewBag.Code</strong> | Tình trạng: <span style="color: #16a34a; font-weight: bold;">Còn hàng</span></p>
+
+            <div style="background: #f8fafc; padding: 15px 20px; border-radius: 8px; margin-bottom: 20px;">
+                <span style="font-size: 28px; font-weight: 800; color: #e31837;">@ViewBag.Price</span>
+            </div>
+
+            <p style="font-size: 14.5px; color: #475569; line-height: 1.6; margin-bottom: 25px;">@ViewBag.Desc</p>
+
+            <button style="background-color: #e31837; color: white; border: none; padding: 14px 30px; font-size: 14px; font-weight: 700; border-radius: 6px; cursor: pointer; text-transform: uppercase;">
+                THÊM VÀO GIỎ HÀNG
+            </button>
+        </div>
+    </div>
+</div>

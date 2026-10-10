@@ -1,0 +1,181 @@
+﻿/* ===============================================
+   GIAO DIỆN ĐĂNG NHẬP & ĐĂNG KÝ - BALOSAIGON
+   =============================================== */
+
+/* Khung bao toàn màn hình */
+.auth-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 15px;
+    background-color: #f8fafc;
+    min-height: 75vh;
+}
+
+/* Thẻ Form chính */
+.auth-card {
+    background: #ffffff;
+    width: 100%;
+    max-width: 440px;
+    padding: 35px 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+    border: 1px solid #e2e8f0;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Tiêu đề trang */
+.auth-title {
+    font-size: 22px;
+    font-weight: 800;
+    color: #1f2229;
+    text-align: center;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+    /* Đường gạch đỏ dưới tiêu đề */
+    .auth-title::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 40px;
+        height: 3px;
+        background-color: #e31837;
+        border-radius: 2px;
+    }
+
+.auth-subtitle {
+    font-size: 13.5px;
+    color: #64748b;
+    text-align: center;
+    margin-top: 12px;
+    margin-bottom: 25px;
+}
+
+/* Nhóm ô nhập liệu */
+.form-group {
+    margin-bottom: 18px;
+}
+
+    .form-group label {
+        display: block;
+        font-size: 13px;
+        font-weight: 600;
+        color: #1f2229;
+        margin-bottom: 6px;
+    }
+
+/* Input tùy chỉnh */
+.form-control-custom {
+    width: 100%;
+    padding: 11px 14px;
+    font-size: 14px;
+    color: #1f2229;
+    background-color: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    outline: none;
+    transition: all 0.2s ease-in-out;
+    box-sizing: border-box;
+}
+
+    .form-control-custom:focus {
+        background-color: #ffffff;
+        border-color: #e31837;
+        box-shadow: 0 0 0 3px rgba(227, 24, 55, 0.12);
+    }
+
+    .form-control-custom::placeholder {
+        color: #94a3b8;
+        font-size: 13px;
+    }
+
+/* Hàng Tùy chọn: Ghi nhớ & Quên mật khẩu */
+.form-actions-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    color: #475569;
+    margin-bottom: 22px;
+}
+
+    .form-actions-flex input[type="checkbox"] {
+        accent-color: #e31837;
+        cursor: pointer;
+    }
+
+.forgot-pass-link {
+    color: #e31837;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+    .forgot-pass-link:hover {
+        color: #c1121f;
+        text-decoration: underline;
+    }
+
+/* Nút Submit */
+.btn-auth-submit {
+    width: 100%;
+    background-color: #e31837;
+    color: #ffffff;
+    border: none;
+    padding: 13px;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+    .btn-auth-submit:hover {
+        background-color: #c1121f;
+    }
+
+    .btn-auth-submit:active {
+        transform: scale(0.99);
+    }
+
+/* Chân trang chuyển đổi giữa Đăng Nhập & Đăng Ký */
+.auth-footer-text {
+    text-align: center;
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px dashed #e2e8f0;
+    font-size: 13.5px;
+    color: #64748b;
+}
+
+    .auth-footer-text a {
+        color: #1f2229;
+        font-weight: 700;
+        text-decoration: none;
+        margin-left: 4px;
+        transition: color 0.2s;
+    }
+
+        .auth-footer-text a:hover {
+            color: #e31837;
+        }
+
+/* Tối ưu hóa cho thiết bị di động */
+@media (max-width: 480px) {
+    .auth-card {
+        padding: 25px 20px;
+    }
+
+    .auth-title {
+        font-size: 20px;
+    }
+}

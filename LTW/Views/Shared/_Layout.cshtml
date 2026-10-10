@@ -1,0 +1,172 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title  BALOSAIGON.COM</title>
+   <style>
+    .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    }
+
+    .user-auth-box {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    }
+
+    .auth-link {
+    color: #333;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    }
+
+    .auth-link:hover {
+    color: #d0021b;
+    }
+
+    .auth-link i {
+    color: #666;
+    }
+
+    .divider {
+    color: #ccc;
+    }
+</style>
+    <!-- Nhúng File CSS Mới (Sửa đường dẫn tương ứng với bản MVC bạn đang dùng) -->
+    <link rel="stylesheet" href="~/Content/TrangChuStyle.css" />
+    <!-- Hoặc nếu là ASP.NET Core: <link rel="stylesheet" href="~/css/balosaigon-style.css" /> -->
+</head>
+<body>
+
+    <!-- 1. TOPBAR -->
+    <div class="bsg-topbar">
+        <div class="bsg-container">
+            <div class="topbar-content">
+                <div class="topbar-contact">
+                    <span>Hệ thống cửa hàng Balo - Túi Xách uy tín tại TP.HCM</span>
+                </div>
+                <div>
+                    <span>Giao hàng thu tiền tận nơi toàn quốc (COD)</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. MAIN HEADER -->
+    <header class="bsg-header">
+        <div class="bsg-container">
+            <div class="header-content">
+                <!-- Logo -->
+                <div class="bsg-logo">
+                    @Html.ActionLink("BALO", "Index", "Home")<span>SAIGON.COM</span>
+                </div>
+
+                <!-- Form tìm kiếm -->
+                <form class="bsg-search-form" action="/search" method="get">
+                    <input type="text" name="q" placeholder="Nhập tên sản phẩm, thương hiệu (Mikkor, Tucano, Roncato...)" />
+                    <button type="submit">TÌM KIẾM</button>
+                </form>
+
+                <!-- Dăng ký/ Dăng nhập & Giỏ hàng -->
+                <div class="header-actions">
+                    <div class="cart-widget">
+                        <i class="fas fa-sign-in-alt"></i>
+                        @*Dẫn đến trang Đăng ký*@
+                        <a href="/Account/DangKy">
+                            Đăng ký/
+                        </a>
+
+                        @*Dẫn đến trang Đăng nhập*@
+                        <a href="/Account/DangNhap">
+                            Đăng nhập
+                        </a>
+                    </div>
+
+                    <div class="cart-widget">
+                        <a href="@Url.Action("Shop","Shopping_cart")" class="cart-btn">
+                            🛒 Giỏ Hàng (0)
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 3. NAVIGATION MENU -->
+    <nav class="bsg-nav">
+        <div class="bsg-container">
+            <ul class="nav-list">
+                <li class="active">@Html.ActionLink("TRANG CHỦ", "Index", "Home")</li>
+                <li>@Html.ActionLink("BALO LAPTOP", "Laptop", "Products", null, new { @style = "display: inline-block; background: #1f2229; color: #fff; padding: 6px 12px; border-radius: 4px; font-size: 12px; font-weight: bold; text-decoration: none;" })</li>
+                <li>@Html.ActionLink("BALO DU LỊCH", "Travel", "Products", null, new { @style = "display: inline-block; background: #1f2229; color: #fff; padding: 6px 12px; border-radius: 4px; font-size: 12px; font-weight: bold; text-decoration: none;" })</li>
+                <li>@Html.ActionLink("BALO MÁY ẢNH", "Camera", "ProductS", null, new { @style = "display: inline-block; background: #1f2229; color: #fff; padding: 6px 12px; border-radius: 4px; font-size: 12px; font-weight: bold; text-decoration: none;" })</li>
+                <li>@Html.ActionLink("TÚI XÁCH / VALI", "Bags", "Products", null, new { @style = "display: inline-block; background: #1f2229; color: #fff; padding: 6px 12px; border-radius: 4px; font-size: 12px; font-weight: bold; text-decoration: none;" })</li>
+                <li>@Html.ActionLink("PHỤ KIỆN", "Accessories", "Products", null, new { @style = "display: inline-block; background: #1f2229; color: #fff; padding: 6px 12px; border-radius: 4px; font-size: 12px; font-weight: bold; text-decoration: none;" })</li>
+                <li>@Html.ActionLink("XÁC NHẬN ĐẶT HÀNG", "Confirm", "Shopping_cart", null, new { @style = "display: inline-block; background: #1f2229; color: #fff; padding: 6px 12px; border-radius: 4px; font-size: 12px; font-weight: bold; text-decoration: none;" })</li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 4. BODY CONTAINER -->
+    <main class="bsg-main-wrapper">
+        <div class="bsg-container">
+            <div class="bsg-card-container">
+                @RenderBody()
+            </div>
+        </div>
+    </main>
+
+    <!-- 5. FOOTER -->
+    <footer class="bsg-footer">
+        <div class="bsg-container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>VỀ BALOSAIGON</h4>
+                    <p>BaloSaigon.com chuyên phân phối các loại Balo laptop, Balo du lịch, Vali, Túi xách chính hãng từ các thương hiệu hàng đầu thế giới.</p>
+                    <p><strong>Địa chỉ:</strong> Cống Quỳnh, P. Nguyễn Cư Trinh, Quận 1, TP.HCM</p>
+                </div>
+
+                <div class="footer-col">
+                    <h4>DANH MỤC SẢN PHẨM</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Balo Laptop Chống Nước</a></li>
+                        <li><a href="#">Balo Du Lịch / Phượt</a></li>
+                        <li><a href="#">Túi Bao Tử / Crossbody</a></li>
+                        <li><a href="#">Vali Kéo Du Lịch</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>CHÍNH SÁCH</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Chính sách bảo hành trọn đời</a></li>
+                        <li><a href="#">Chính sách đổi trả trong 7 ngày</a></li>
+                        <li><a href="#">Phương thức thanh toán</a></li>
+                        <li><a href="#">Chính sách vận chuyển</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>TỔNG ĐÀI HỖ TRỢ</h4>
+                    <p>Mua hàng online: <strong>0834.273.273</strong></p>
+                    <p>Góp ý, khiếu nại: <strong>0902.920.670</strong></p>
+                    <p>Email: info@balosaigon.com</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="bsg-copyright">
+            <div class="bsg-container">
+                <p>&copy; @DateTime.Now.Year BaloSaigon.com. Dự án bài tập luận ASP.NET MVC.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

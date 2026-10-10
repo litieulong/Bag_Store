@@ -1,0 +1,454 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Confirm</title>
+    <style>
+        .cart-confirm-container {
+            width: 100%;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 40px;
+            text-align: center;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+            .cart-confirm-container h2 {
+                font-size: 28px;
+                margin-bottom: 20px;
+            }
+
+        .cart-confirm-message {
+            font-size: 17px;
+            margin-bottom: 30px;
+            color: #555;
+        }
+
+        .confirm-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .btn-confirm,
+        .btn-return-shop {
+            display: inline-block;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .btn-confirm {
+            background: #000;
+            color: #fff;
+        }
+
+            .btn-confirm:hover {
+                background: #333;
+            }
+
+        .btn-return-shop {
+            background: #eee;
+            color: #222;
+        }
+
+            .btn-return-shop:hover {
+                background: #ddd;
+            }
+            /* ==========================================
+   HISTORY - LỊCH SỬ ĐƠN HÀNG
+   ========================================== */
+
+
+/* ==========================================
+   NỀN TRANG
+   ========================================== */
+
+body {
+    margin: 0;
+    padding: 0;
+
+    background: #f3f4f6;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    color: #222;
+}
+
+
+/* ==========================================
+   KHỐI LỊCH SỬ
+   ========================================== */
+
+.history-container {
+    width: 90%;
+
+    max-width: 1000px;
+
+    margin: 35px auto 50px auto;
+
+    padding: 35px 40px;
+
+    background: #ffffff;
+
+    border-radius: 5px;
+
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.08);
+
+    box-sizing: border-box;
+}
+
+
+/* ==========================================
+   TIÊU ĐỀ
+   ========================================== */
+
+.history-title {
+    margin: 0;
+
+    padding-bottom: 15px;
+
+    font-size: 24px;
+
+    font-weight: bold;
+
+    color: #222;
+
+    border-bottom: 2px solid #ed1c24;
+}
+
+
+/* ==========================================
+   KHỐI ĐƠN HÀNG
+   ========================================== */
+
+.history-item {
+    margin-top: 25px;
+
+    padding: 20px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 5px;
+
+    background: #fff;
+}
+
+
+/* ==========================================
+   HEADER ĐƠN HÀNG
+   ========================================== */
+
+.history-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding-bottom: 15px;
+
+    border-bottom: 1px solid #eee;
+}
+
+
+/* MÃ ĐƠN */
+
+.order-code {
+    font-size: 17px;
+
+    font-weight: bold;
+
+    color: #222;
+}
+
+
+/* TRẠNG THÁI */
+
+.order-status {
+    padding: 6px 12px;
+
+    background: #ed1c24;
+
+    color: #fff;
+
+    border-radius: 3px;
+
+    font-size: 13px;
+
+    font-weight: bold;
+}
+
+
+/* ==========================================
+   THÔNG TIN KHÁCH HÀNG
+   ========================================== */
+
+.history-info {
+    margin-top: 15px;
+}
+
+
+.history-info p {
+    margin: 10px 0;
+
+    font-size: 15px;
+
+    line-height: 1.5;
+}
+
+
+.history-info strong {
+    display: inline-block;
+
+    width: 150px;
+
+    color: #333;
+}
+
+
+/* ==========================================
+   DANH SÁCH SẢN PHẨM
+   ========================================== */
+
+.product-list {
+    margin-top: 20px;
+
+    padding-top: 15px;
+
+    border-top: 1px solid #eee;
+}
+
+
+/* TIÊU ĐỀ SẢN PHẨM */
+
+.product-list-title {
+    margin-bottom: 12px;
+
+    font-size: 16px;
+
+    font-weight: bold;
+}
+
+
+/* ==========================================
+   TỪNG SẢN PHẨM
+   ========================================== */
+
+.product-item {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 10px 0;
+
+    border-bottom: 1px solid #f0f0f0;
+
+    font-size: 14px;
+}
+
+
+/* TÊN SẢN PHẨM */
+
+.product-name {
+    flex: 1;
+}
+
+
+/* SỐ LƯỢNG */
+
+.product-quantity {
+    width: 100px;
+
+    text-align: center;
+}
+
+
+/* GIÁ */
+
+.product-price {
+    width: 150px;
+
+    text-align: right;
+
+    font-weight: bold;
+
+    color: #ed1c24;
+}
+
+
+/* ==========================================
+   TỔNG TIỀN
+   ========================================== */
+
+.order-total {
+    display: flex;
+
+    justify-content: flex-end;
+
+    margin-top: 20px;
+
+    padding-top: 15px;
+
+    border-top: 2px solid #eee;
+
+    font-size: 18px;
+
+    font-weight: bold;
+}
+
+
+.order-total span {
+    margin-left: 10px;
+
+    color: #ed1c24;
+}
+
+
+/* ==========================================
+   BUTTON TIẾP TỤC MUA HÀNG
+   ========================================== */
+
+.history-buttons {
+    margin-top: 30px;
+
+    text-align: center;
+}
+
+
+.btn-shopping {
+    display: inline-block;
+
+    padding: 12px 25px;
+
+    background: #222;
+
+    color: #fff;
+
+    border-radius: 3px;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    transition: 0.2s;
+}
+
+
+.btn-shopping:hover {
+    background: #ed1c24;
+
+    color: #fff;
+}
+
+
+/* ==========================================
+   RESPONSIVE
+   ========================================== */
+
+    media (max-width: 768px) {
+
+    .history-container {
+        width: 94%;
+
+        padding: 25px 20px;
+    }
+
+
+    .history-header {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 10px;
+    }
+
+
+    .product-item {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 5px;
+    }
+
+
+    .product-quantity,
+    .product-price {
+        width: auto;
+
+        text-align: left;
+    }
+
+
+    .history-info strong {
+        width: 120px;
+    }
+
+}
+    </style>
+</head>
+<body>
+    <!-- KHỐI XÁC NHẬN -->
+    <main class="cart-confirm-container">
+
+        <h2>XÁC NHẬN ĐƠN HÀNG</h2>
+
+        <p class="cart-confirm-message">
+            Bạn đã kiểm tra các sản phẩm trong giỏ hàng?
+        </p>
+
+        <div class="confirm-buttons">
+
+            <a href="@Url.Action("Index", "Products")"
+               class="btn-return-shop">
+                TIẾP TỤC MUA HÀNG
+            </a>
+
+            <a href="@Url.Action("Confirm", "Shopping_cart")"
+               class="btn-confirm">
+                THANH TOÁN NGAY
+            </a>
+
+        </div>
+
+        <head>
+            <meta name="viewport" content="width=device-width" />
+
+            <title>Lịch sử đơn hàng</title>
+
+            <!-- Gọi file CSS -->
+            <link rel="stylesheet"
+                  href="@Url.Content("~/Content/history.css")" />
+        </head>
+
+        <body>
+
+            <!-- ==============================
+             LỊCH SỬ ĐƠN HÀNG
+             ============================== -->
+
+            <main class="history-container">
+
+                <!-- TIÊU ĐỀ -->
+
+                <h2 class="history-title">
+                    LỊCH SỬ ĐƠN HÀNG
+                </h2> 
+    </main>
+
+</body>
+</html>

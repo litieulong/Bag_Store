@@ -1,0 +1,290 @@
+﻿/* =========================================================
+   BALOSAIGON THEME - CUSTOM CSS
+   ========================================================= */
+
+:root {
+    --bsg-red: #e31837; /* Đỏ thương hiệu BaloSaigon */
+    --bsg-red-hover: #b80f28;
+    --bsg-dark: #1f2229; /* Đen xám thanh Menu & Header */
+    --bsg-black: #111317; /* Đen Footer */
+    --bsg-gray-bg: #f4f5f7; /* Xám nền sản phẩm */
+    --bsg-border: #e2e8f0; /* Viền nhẹ */
+    --bsg-text: #2b2f38; /* Màu chữ chính */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, Roboto, sans-serif;
+}
+
+body {
+    background-color: var(--bsg-gray-bg);
+    color: var(--bsg-text);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s ease;
+}
+
+ul {
+    list-style: none;
+}
+
+/* =========================================================
+   1. TOPBAR & HEADER
+   ========================================================= */
+.bsg-topbar {
+    background-color: var(--bsg-dark);
+    color: #a0a6b5;
+    font-size: 12px;
+    padding: 6px 0;
+    border-bottom: 1px solid #2d323e;
+}
+
+.bsg-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.topbar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.topbar-contact span {
+    margin-right: 15px;
+}
+
+.topbar-contact i, .topbar-contact strong {
+    color: #ffffff;
+}
+
+/* Main Header */
+.bsg-header {
+    background-color: #ffffff;
+    padding: 15px 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* Logo */
+.bsg-logo a {
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--bsg-red);
+    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+}
+
+.bsg-logo span {
+    color: var(--bsg-dark);
+    font-weight: 300;
+}
+
+/* Search Box */
+.bsg-search-form {
+    display: flex;
+    flex: 1;
+    max-width: 520px;
+}
+
+    .bsg-search-form input {
+        width: 100%;
+        padding: 10px 16px;
+        font-size: 14px;
+        border: 2px solid var(--bsg-red);
+        border-radius: 4px 0 0 4px;
+        outline: none;
+    }
+
+    .bsg-search-form button {
+        background-color: var(--bsg-red);
+        color: #ffffff;
+        border: none;
+        padding: 0 24px;
+        font-weight: bold;
+        font-size: 14px;
+        border-radius: 0 4px 4px 0;
+        cursor: pointer;
+    }
+
+        .bsg-search-form button:hover {
+            background-color: var(--bsg-red-hover);
+        }
+
+/* Header Hotline & Cart */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.hotline-box {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+}
+
+.hotline-label {
+    font-size: 11px;
+    color: #718096;
+    text-transform: uppercase;
+}
+
+.hotline-number {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--bsg-red);
+}
+
+.cart-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: var(--bsg-dark);
+    color: #ffffff;
+    padding: 9px 18px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+    .cart-btn:hover {
+        background-color: var(--bsg-red);
+    }
+
+/* =========================================================
+   2. MAIN NAVIGATION
+   ========================================================= */
+.bsg-nav {
+    background-color: var(--bsg-dark);
+    border-bottom: 3px solid var(--bsg-red);
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+.nav-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+    .nav-list > li > a {
+        display: block;
+        padding: 12px 18px;
+        color: #ffffff;
+        font-size: 14px;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+
+    .nav-list > li:hover > a,
+    .nav-list > li.active > a {
+        background-color: var(--bsg-red);
+    }
+
+/* =========================================================
+   3. CONTAINER NỘI DUNG CHÍNH (BODY)
+   ========================================================= */
+.bsg-main-wrapper {
+    flex: 1;
+    padding: 25px 0 40px 0;
+}
+
+.bsg-card-container {
+    background-color: #ffffff;
+    border-radius: 6px;
+    padding: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+/* =========================================================
+   4. FOOTER (CHÂN TRANG)
+   ========================================================= */
+.bsg-footer {
+    background-color: var(--bsg-black);
+    color: #9aa1b1;
+    padding-top: 45px;
+    margin-top: auto;
+    font-size: 13.5px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 30px;
+    padding-bottom: 35px;
+}
+
+.footer-col h4 {
+    color: #ffffff;
+    font-size: 15px;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+    position: relative;
+    padding-bottom: 8px;
+}
+
+    .footer-col h4::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 35px;
+        height: 2px;
+        background-color: var(--bsg-red);
+    }
+
+.footer-col p {
+    line-height: 1.7;
+    margin-bottom: 10px;
+}
+
+.footer-links li {
+    margin-bottom: 8px;
+}
+
+.footer-links a:hover {
+    color: #ffffff;
+    padding-left: 4px;
+}
+
+.bsg-copyright {
+    background-color: #090a0d;
+    padding: 16px 0;
+    text-align: center;
+    font-size: 12.5px;
+    border-top: 1px solid #1a1d24;
+    color: #6c757d;
+}
+
+/* Responsive cơ bản */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+    }
+
+    .bsg-search-form {
+        max-width: 100%;
+    }
+
+    .hotline-box {
+        display: none;
+    }
+}
